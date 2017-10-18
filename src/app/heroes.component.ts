@@ -22,7 +22,6 @@ export class HeroesComponent implements OnInit {
         .getHeroes()
         .then(heroes => this.heroes = heroes);
   }
-/*
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
@@ -41,7 +40,7 @@ export class HeroesComponent implements OnInit {
           if (this.selectedHero === hero) { this.selectedHero = null; }
         });
   }
-*/
+
   ngOnInit(): void {
     this.getHeroes();
   }
