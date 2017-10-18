@@ -1,33 +1,39 @@
-// Keep the Input import for now, you'll remove it later:
-import { Component, Input, OnInit } from '@angular/core';
+import 'rxjs/add/operator/switchMap';
+import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
-import 'rxjs/add/operator/switchMap';
 
+import { Hero }        from './hero';
 import { HeroService } from './hero.service';
-import { Hero } from './hero';
 
 @Component({
   selector: 'hero-detail',
-  templateUrl:  './hero-detail.component.html',
-  styleUrls: [  './hero-detail.component.css']
+  templateUrl: './hero-detail.component.html',
+  styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-    constructor(
-        private heroService: HeroService,
-        private route: ActivatedRoute,
-        private location: Location
-      ) {}
+  hero: Hero;
 
-      ngOnInit(): void {
-        this.route.paramMap
-          .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
-          .subscribe(hero => this.hero = hero);
-      }      
+  constructor(
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
-      goBack(): void {
-        this.location.back();
-      }
+  ngOnInit(): void {}
+/*
+  ngOnInit(): void {
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
+      .subscribe(hero => this.hero = hero);
+  }
 
-      @Input() hero: Hero;
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() => this.goBack());
+  }
+*/
+  goBack(): void {
+    this.location.back();
+  }
 }
