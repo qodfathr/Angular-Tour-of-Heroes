@@ -22,21 +22,23 @@ export class HeroService {
 //     });
 //     }
 
+/*
     getHeroes(): Promise<Hero[]> {
         return this.http.get(this.heroesUrl)
                    .toPromise()
-                   .then(data => data['results'] /*as Hero[]*/)
+                   .then(data => data['results'] as Hero[])
                    .catch(this.handleError);
     }
-      /*
+*/
+      
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
-               .then(response => response.json().data as Hero[])
+               .then(response => response as Hero[])
                .catch(this.handleError);
   }
 
-
+/*
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url)
