@@ -13,6 +13,7 @@ export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
 
   constructor(private http: HttpClient) { }
+  //constructor(private http: HttpClient) { console.log('http', http);  }
     
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
