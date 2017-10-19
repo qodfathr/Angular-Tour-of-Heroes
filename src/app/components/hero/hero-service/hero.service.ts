@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from './hero';
+import { Hero } from '../hero';
 
 @Injectable()
 export class HeroService {
@@ -13,8 +13,8 @@ export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
 
   constructor(private http: HttpClient) { }
-  //constructor(private http: HttpClient) { console.log('http', http);  }
-    
+  // constructor(private http: HttpClient) { console.log('http', http);  }
+
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
@@ -48,7 +48,7 @@ export class HeroService {
   }
 
   update(hero: Hero): Promise<Hero> {
-    //const url = `${this.heroesUrl}/${hero.id}`;
+    // const url = `${this.heroesUrl}/${hero.id}`;
     return this.http
       .put<Hero>(this.heroesUrl, hero, {headers: this.headers})
       .toPromise()
@@ -60,5 +60,5 @@ export class HeroService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-  
+
 }
